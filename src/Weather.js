@@ -3,18 +3,18 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ForecastCard from "./ForecastCard";
 import './styles/weather.css'
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
     const [weatherData, setWeatherData] = useState({ ready: false })
 
     function handleResponse(response) {
-        console.log(response.data);
         setWeatherData({
             ready: true,
             coordinates: response.data.coord,
             temperature: Math.round(response.data.main.temp),
             humidity: response.data.main.humidity,
-            date: "Friday 5:00PM",
+            date: new Date(response.data.dt * 1000),
             description: response.data.weather[0].description,
             icon: response.data.weather[0].icon,
             wind: response.data.wind.speed,
@@ -22,15 +22,11 @@ export default function Weather(props) {
         });
     }
 
-
-    
-
     const handleSearch = (event) => {
         event.preventDefault();
         const searchValue = event.target.elements.search.value;
         setWeatherData({city: searchValue})
     };
-
 
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -58,7 +54,7 @@ export default function Weather(props) {
                     </div>
                     <div className="justify-content-start">
                         <h1 className="lh-lg">{weatherData.city}</h1>
-                        <p>{weatherData.date}</p>
+                        <FormattedDate date={weatherData.date}/>
                         <p className="text-capitalize">{weatherData.description}</p>
                     </div>
                     <div className="row m-5 d-flex justify-content-center" >
