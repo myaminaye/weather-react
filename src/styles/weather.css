@@ -1,6 +1,6 @@
 .root {
     width: 100%;
-    height: 100vh;
+    height: auto;
     background-color: #cdc7e5;
   }
   
@@ -14,10 +14,9 @@
     height: auto;
     background-color: #fffbdb;
     border-radius: 10px;
-    margin-top: 4%;
+    margin: 4% auto;
     box-shadow: #7776bc 0px 22px 22px, #7776bc 0px -6px 15px, #7776bc 0px 2px 3px,
       #7776bc 0px 6px 6px, #7776bc 0px -1px 2px;
-    margin: auto;
     padding: 10px;
   }
   
@@ -38,20 +37,23 @@
   .searchBtn {
     background-color: #ffec51;
     color: #7776bc;
-    margin-bottom: 5px;
     margin-left: 5px;
     border: none;
-    height: 48px;
-    width: 100px;
+  }
+
+  .searchBtn:hover {
+    background-color: #7776bc;
+    color: #ffec51;
   }
   
   .currentBtn {
     background-color: #7776bc;
     color: white;
-    margin-top: 10px;
     border: none;
-    height: 50px;
-    width: 100px;
-    border-radius: 10px;
+  }
+
+  .currentBtn:hover{
+    background-color:#ffec51;
+    color:#7776bc;
   }
   
