@@ -20,20 +20,6 @@
     padding: 10px;
   }
   
-  .savedCities {
-    list-style: none;
-    display: flex;
-  }
-  
-  .savedCity {
-    margin-right: 20px;
-  }
-  
-  .savedCity a {
-    text-decoration: none;
-    color: #7776bc;
-  }
-  
   .searchBtn {
     background-color: #ffec51;
     color: #7776bc;
