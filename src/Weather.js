@@ -23,7 +23,7 @@ export default function Weather(props) {
         });
     }
 
-    function search(){
+    function search() {
         const apiKey = "085471793943e047acaad88b8e636154";
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
         axios.get(apiUrl).then(handleResponse);
@@ -44,7 +44,6 @@ export default function Weather(props) {
     if (weatherData.ready) {
         return (
             <div className="root">
-                <h2 className="title">Weather Application by Emerald</h2>
                 <div className="main container">
                     <div className="row mt-3" style={{ padding: "0 30px" }}>
                         <div className="col-6" >

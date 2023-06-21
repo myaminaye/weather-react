@@ -1,24 +1,33 @@
 import React from 'react';
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from './WeatherIcon';
 
-export default function WeatherInfo(props){
-    return(
+export default function WeatherInfo(props) {
+    return (
         <div className='container'>
             <div className="justify-content-start">
-                        <h1 className="lh-lg">{props.data.city}</h1>
-                        <FormattedDate date={props.data.date}/>
-                        <p className="text-capitalize">{props.data.description}</p>
-                    </div>
-                    <div className="row m-5 d-flex justify-content-center" >
-                        <div className="col-4 d-flex">
-                            <img src="http://openweathermap.org/img/wn/04d@2x.png" style={{ marginTop: "-50px" }} alt="weather status icon" />
-                            <h3>{props.data.temperature}°C</h3>
+                <h1 className="lh-lg">{props.data.city}</h1>
+                <FormattedDate date={props.data.date} />
+                <p className="text-capitalize">{props.data.description}</p>
+            </div>
+            <div className="row m-5 d-flex justify-content-center" >
+                <div className="col-6">
+                    <div className="d-flex">
+                        <div className='mx-3'>
+                            {/* <img src={`https://openweathermap.org/img/wn/${props.data.icon}@2x.png`} style={{ marginTop: "-30px" }} alt="weather status icon" /> */}
+                            <WeatherIcon code={props.data.icon} size={52} />
                         </div>
-                        <div className="col-4">
-                            <p>Humidity: {props.data.humidity}%</p>
-                            <p>Wind: {props.data.wind}km/h</p>
+
+                        <div>
+                            <h1>{props.data.temperature}°C</h1>
                         </div>
                     </div>
+                </div>
+                <div className="col-4">
+                    <p>Humidity: {props.data.humidity}%</p>
+                    <p>Wind: {props.data.wind}km/h</p>
+                </div>
+            </div>
         </div>
     )
 }
