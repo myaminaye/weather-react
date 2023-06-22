@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ForecastCard from "./ForecastCard";
 import './styles/weather.css'
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
     const [weatherData, setWeatherData] = useState({ ready: false });
@@ -39,33 +39,20 @@ export default function Weather(props) {
         setCity(event.target.value);
     }
 
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
     if (weatherData.ready) {
         return (
             <div className="root">
                 <div className="main container">
                     <div className="row mt-3" style={{ padding: "0 30px" }}>
-                        <div className="col-6" >
+                        <div className="col" >
                             <form onSubmit={handleSearch} style={{ display: "flex" }}>
                                 <input placeholder="   Enter a city" name="search" className="rounded border" onChange={handleCityChange} />
                                 <button type="submit" className="btn btn-primary searchBtn">Search</button>
                             </form>
                         </div>
-                        <div className="col-6 d-flex justify-content-end" >
-                            <button className="btn btn-primary currentBtn ">Current</button>
-                        </div>
                     </div>
                     <WeatherInfo data={weatherData} />
-                    <div className="row justify-content-center my-2" >
-                        {
-                            days.map((day, index) => (
-                                <div key={index} className="col-1 mx-3 text-center">
-                                    <ForecastCard day={day} temp="18" />
-                                </div>
-                            ))
-                        }
-                    </div>
+                    <WeatherForecast coordinates={weatherData.coordinates}/>
                 </div>
                 <footer>
                     <small className="my-3"><a href="https://github.com/myaminaye/weather-react" rel="noreferrer" target="_blank">Open-source code</a>, by <a href="https://myaminaye.netlify.app/" rel="noreferrer" target="_blank" style={{ color: "black", textDecoration: "none" }}>Mya Min Aye</a></small>
